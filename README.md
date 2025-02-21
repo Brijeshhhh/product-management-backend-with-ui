@@ -1,5 +1,5 @@
 
-# Product-Management-backend-with-ui 
+# product-management-backend-with-ui 
 
 This is a **Spring Boot-based Product Management Application** that provides both **REST API endpoints** and a **Thymeleaf-powered UI**. It supports **CRUD operations**, pagination, and database flexibility with **H2, MySQL, or OracleSQL**.  
 
