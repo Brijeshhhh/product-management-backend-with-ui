@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product Management</title>
+  <style>
+    body { font-family: Arial; margin: 1rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f4f4f4; }
+    button {
+        padding: 5px 10px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover { background: #45a049; }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+<h1>Product Management</h1>
+<!-- Add Product Button -->
+<button onclick="window.location.href='/add-product'">Add Product</button>
+<br>
+<br>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="product : ${products}">
+    <td th:text="${product.id}"></td>
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.price}"></td>
+    <td>
+      <a th:href="@{/update-product/{id}(id=${product.id})}">
+        <button>Update</button>
+      </a>
+      <button onclick="deleteProduct(this)" th:data-id="${product.id}">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <button th:if="${currentPage > 0}" th:onclick="'window.location.href=\'/?page=' + (${currentPage} - 1) + '&size=' + ${size} + '\''">Previous</button>
+  <span>Page <span th:text="${currentPage + 1}"></span> of <span th:text="${totalPages}"></span></span>
+  <button th:if="${currentPage < totalPages - 1}" th:onclick="'window.location.href=\'/?page=' + (${currentPage} + 1) + '&size=' + ${size} + '\''">Next</button>
+</div>
+
+<script>
+    function deleteProduct(button) {
+        const id = button.getAttribute('data-id');
+        if (confirm('Are you sure you want to delete this product?')) {
+            fetch(`/api/products/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Error: Unable to delete the product.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the product.');
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
