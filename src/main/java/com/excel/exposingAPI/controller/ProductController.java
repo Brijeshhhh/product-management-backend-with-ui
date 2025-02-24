@@ -1,6 +1,6 @@
-package com.excelacom.exposingAPI.controller;
-        import com.excelacom.exposingAPI.model.Product;
-        import com.excelacom.exposingAPI.service.ProductService;
+package com.excel.exposingAPI.controller;
+        import com.excel.exposingAPI.model.Product;
+        import com.excel.exposingAPI.service.ProductService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.data.domain.Page;
         import org.springframework.data.domain.PageRequest;

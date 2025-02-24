@@ -1,4 +1,4 @@
-package com.excelacom.exposingAPI;
+package com.excel.exposingAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

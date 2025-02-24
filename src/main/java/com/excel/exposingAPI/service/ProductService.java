@@ -1,8 +1,8 @@
-package com.excelacom.exposingAPI.service;
+package com.excel.exposingAPI.service;
 
 
-import com.excelacom.exposingAPI.model.Product;
-import com.excelacom.exposingAPI.repository.ProductRepository;
+import com.excel.exposingAPI.model.Product;
+import com.excel.exposingAPI.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,4 +1,4 @@
-package com.excelacom.exposingAPI.model;
+package com.excel.exposingAPI.model;
 
         import jakarta.persistence.*;
         import lombok.Data;
